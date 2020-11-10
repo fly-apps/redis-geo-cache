@@ -1,0 +1,26 @@
+# fly.toml file generated for redis-example on 2020-10-30T20:01:11-05:00
+
+app = "redis-geo-example"
+
+[mount]
+source      = "redis_server"
+destination = "/data"
+
+[env]
+REDIS_MASTER = "redis-example.fly.dev 10000"
+
+[[services]]
+internal_port = 7379
+protocol      = "tcp"
+
+  [services.concurrency]
+  hard_limit = 25
+  soft_limit = 20
+
+  [[services.ports]]
+  handlers = []
+  port     = "10000"
+
+  [[services.tcp_checks]]
+  interval = 10000
+  timeout  = 2000
