@@ -31,10 +31,10 @@ The primary Redis URL is:
 
 ```bash
 # format
-redis://x:<password>@<primary-region>.<appname>.internal:5432
+redis://x:<password>@<primary-region>.<appname>.internal:6379
 
 # example in scl
-redis://x:password@scl.my-redis-app.internal:5432
+redis://x:password@scl.my-redis-app.internal:6379
 ```
 
 Read replicas are similar, but using a different region prefix (the `$FLY_REGION` environment variable is handy here).
@@ -42,9 +42,9 @@ Read replicas are similar, but using a different region prefix (the `$FLY_REGION
 To generate a local read replica with Node.js, you might do something like:
 
 ```javascript
-const primary = new URL("redis://x:password@scl.my-redis-app.internal:5432")
+const primary = new URL("redis://x:password@scl.my-redis-app.internal:6379")
 const replica = new URL(primary)
 replica.hostname = `${process.env['FLY_REGION']}.my-redis-app.internal`
 replica.toString()
-// 'redis://x:password@ord.my-redis-app.internal:5432'
+// 'redis://x:password@ord.my-redis-app.internal:6379'
 ```
