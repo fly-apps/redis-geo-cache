@@ -1,0 +1,9 @@
+[experimental]
+auto_rollback = false
+
+[env]
+  PRIMARY_REGION = "scl"
+
+[mount]
+  destination = "/data"
+  source = "redis_server"
