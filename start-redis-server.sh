@@ -7,7 +7,7 @@ nohup /bin/sh -c "sleep 10 && redis-cli -a $REDIS_PASSWORD set fly_region $FLY_R
 
 if [ "$PRIMARY_REGION" = "$FLY_REGION" ]; then
     # start master
-    echo "Starting primary in $PFLY_REGION"
+    echo "Starting primary in $FLY_REGION"
     redis-server /usr/local/etc/redis/redis.conf \
         --requirepass $REDIS_PASSWORD
 else
